@@ -1,0 +1,34 @@
+---
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: Update hostname
+  hostname:
+    name: "{{ vm_name }}"
+
+# regexp: update hostname to match your template
+- name: Update /etc/hosts on Debian
+  lineinfile:
+    path: /etc/hosts
+    regexp: (^(127\.0\.1\.1)\s+(temp-debian))
+    line: "127.0.1.1 {{vm_name }}"
+    state: present
+  when: ansible_distribution == 'Debian'
+
+# regexp: update hostname to match your template
+- name: Update /etc/hosts on Ubuntu
+  lineinfile:
+    path: /etc/hosts
+    regexp: (^(127\.0\.1\.1)\s+(temp-ubuntu))
+    line: "127.0.1.1 {{vm_name }}"
+    state: present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install prereqs
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt:
+    name: "{{ apt_list }}"
