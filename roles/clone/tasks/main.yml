@@ -1,0 +1,20 @@
+---
+
+# Clone template VM
+- name: Clone VM
+  proxmox_kvm:
+    api_user: root@pam
+    api_password: "{{ prox_password }}"
+    api_host: "{{ node }}"
+    clone: "{{ clone_source }}"
+    name: "{{ vm_name }}"
+    node: "{{ node }}"
+    storage: "{{ storage }}"
+    format: raw
+    newid: "{{ vm_id }}"
+    agent: yes
+    autostart: yes
+    timeout: 500
+
+- name: Pause 10 seconds
+  pause: seconds=10
