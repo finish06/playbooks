@@ -4,12 +4,14 @@
 #Debian
 - name: Update cache via sudo
   become: true
-  ansible_become_password: "{{ password }}"
+  vars:
+    ansible_become_password: "{{ password }}"
   apt: update_cache=yes
   when: ansible_os_family == "Debian"
 - name: Upgrade via sudo
   become: true
-  ansible_become_password: "{{ password }}"
+  vars:
+    ansible_become_password: "{{ password }}"
   apt: upgrade=full
   when: ansible_os_family == "Debian"
 
