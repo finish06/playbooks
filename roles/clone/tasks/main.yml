@@ -18,3 +18,15 @@
 
 - name: Pause 10 seconds
   pause: seconds=10
+
+- name: Power VM on
+  proxmox_kvm:
+    api_user: root@pam
+    api_password: "{{ prox_password }}"
+    api_host: "{{ node }}"
+    name: "{{ vm_name }}"
+    node: "{{ node_name }}"
+    state: started
+
+- name: Pause 60 seconds
+  pause: seconds=60
