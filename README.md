@@ -23,6 +23,11 @@ This repo consist of my Ansible playbooks that are used to manage my Homelab.
 2. Move template to node that is performing actions
 3. Install Proxmoxer on node performing actions
 4. Execute below script: update __proxmox_node__, __####__ & __vm_name__ as appropriate
+
 `ansible-playbook -i "__proxmox_node__," /root/playbooks/new_vm.yml -e 'ansible_python_interpreter=/usr/bin/python3 vm_id=__####__ vm_name=__vm_name__' -u "root" --ask-vault-pass`
 
+### Update VMs/CTs
+1. Update 'vars` folder in `update` role: password (ssh password - vault optional)
+2. Update ssh user as appropriate: `-u root` indicates root ssh user
 
+`ansible-playbook -i /etc/ansible/proxmox.py /root/playbooks/new_vm.yml --limit "Update" -e 'ansible_python_interpreter=/usr/bin/python3' -u "root" --ask-vault-pass`
