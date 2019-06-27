@@ -1,5 +1,7 @@
 ---
+# Update Debian or RedHat OSs
 
+#Debian
 - name: Update cache via sudo
   become: true
   apt: update_cache=yes
@@ -8,6 +10,8 @@
   become: true
   apt: upgrade=full
   when: ansible_os_family == "Debian"
+
+# RedHat
 - name: Upgrade via sudo
   become: true
   yum:
