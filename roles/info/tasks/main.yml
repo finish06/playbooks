@@ -11,4 +11,4 @@
   register: uptime
 - name: Print output
   debug:
-    msg: {{ hostname.stdout }}: {{ uptime.stdout }}
+    msg: "{{ hostname.stdout }}: {{ uptime.stdout }}"
