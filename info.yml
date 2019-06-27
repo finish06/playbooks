@@ -1,0 +1,7 @@
+---
+
+- name: Get Info
+  hosts: all
+  gather_facts: yes
+  roles:
+    - info
