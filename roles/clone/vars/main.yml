@@ -7,7 +7,7 @@ prox_password: !vault |
           3530
 node: node1.du.nn
 node_name: node1
-clone_source: temp-debian
+clone_source: temp-debian # Template name, template must be on same machine as node/node_name
 vm_name:
 storage: Ceph_VMs
-vmid:
+vm_id:
