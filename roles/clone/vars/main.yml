@@ -6,6 +6,7 @@ prox_password: !vault |
           3738386130396136390a646435336463326261316630346433363231303035346430396236336161
           3530
 node: node1.du.nn
+node_name: node1
 clone_source: temp-debian
 vm_name:
 storage: Ceph_VMs

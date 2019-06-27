@@ -8,7 +8,7 @@
     api_host: "{{ node }}"
     clone: "{{ clone_source }}"
     name: "{{ vm_name }}"
-    node: "{{ node }}"
+    node: "{{ node_name }}"
     storage: "{{ storage }}"
     format: raw
     newid: "{{ vm_id }}"
