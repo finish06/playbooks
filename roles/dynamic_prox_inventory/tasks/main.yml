@@ -1,0 +1,11 @@
+---
+
+- name: Run script to find IP
+  local_action: script files/ipQueryCmdLine.py -n {{ node_name }} -v {{ vm_id }}
+  register: ip_address
+
+- name: Add host(s) to inventory
+  add_host:
+    name: '{{ vm_name }}'
+    groups: new_hosts
+    ansible_host: "{{ ip_address.stdout_lines[0] }}"

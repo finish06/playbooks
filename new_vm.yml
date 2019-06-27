@@ -7,3 +7,9 @@
     ansible_password: "{{ prox_password }}"
   roles:
     - clone
+
+- name: Dynamically create inventory
+  hosts: 127.0.0.1
+  gather_facts: no
+  roles:
+   - dynamic_prox_inventory
