@@ -3,6 +3,6 @@
 - name: Update
   hosts: all
   gather_facts: yes
-  ansible_ssh_pass: "{{ password }}"
+  ansible_password: "{{ password }}"
   roles:
     - update
