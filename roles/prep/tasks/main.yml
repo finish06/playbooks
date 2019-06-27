@@ -1,0 +1,16 @@
+---
+# Prepare Debian based machine for Ansible interactions
+# Unable to determine OS family due to inability to gather facts
+
+- name: Check for Python3
+  shell: dpkg-query -W 'python3-simplejson'
+  ignore_errors: true
+  register: is_json
+- name: Install Ansible prereqs
+  become: true
+  raw: apt install -y python3-simplejson
+  when: is_json.rc == 1
+- name: Install aptitude
+  become: true
+  raw: apt install -y aptitude
+  when: is_json.rc == 1
