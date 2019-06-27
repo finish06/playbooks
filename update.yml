@@ -1,0 +1,7 @@
+---
+
+- name: Update
+  hosts: all
+  gather_facts: yes
+  roles:
+    - update
