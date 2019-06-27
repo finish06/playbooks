@@ -9,3 +9,7 @@
     name: '{{ vm_name }}'
     groups: new_hosts
     ansible_host: "{{ ip_address.stdout_lines[0] }}"
+
+- name: Print output
+  debug:
+    msg: "{{ ip_address.stdout_lines[0] }}"
