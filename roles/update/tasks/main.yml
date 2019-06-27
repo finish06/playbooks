@@ -18,6 +18,8 @@
 # RedHat
 - name: Upgrade via sudo
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   yum:
     name: "*"
     state: latest
