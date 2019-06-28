@@ -11,6 +11,7 @@
   apt:
     name: "{{ apt_list }}"
 
+# Hostname module broken (06/27): issue number: 19814
 - name: Update hostname on Debian
   become: true
   vars:
@@ -34,6 +35,7 @@
     state: present
   when: ansible_distribution == 'Debian'
 
+# Hostname module broken (06/27): issue number: 19814
 - name: Update hostname on Ubuntu
   become: true
   vars:
