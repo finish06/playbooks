@@ -12,8 +12,12 @@
     name: "{{ apt_list }}"
 
 - name: Update hostname
-  hostname:
-    name: "{{ vm_name }}"
+  lineinfile:
+    path: /etc/hosts
+    regexp: temp-debian
+    line: "{{vm_name }}"
+    state: present
+  when: ansible_distribution == 'Debian'
 
 # regexp: update hostname to match your template
 - name: Update /etc/hosts on Debian
@@ -23,6 +27,14 @@
     line: "127.0.1.1 {{vm_name }}"
     state: present
   when: ansible_distribution == 'Debian'
+
+- name: Update hostname
+  lineinfile:
+    path: /etc/hosts
+    regexp: temp-ubuntu
+    line: "{{vm_name }}"
+    state: present
+  when: ansible_distribution == 'Ubuntu'
 
 # regexp: update hostname to match your template
 - name: Update /etc/hosts on Ubuntu
