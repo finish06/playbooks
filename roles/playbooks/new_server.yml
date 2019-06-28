@@ -1,0 +1,5 @@
+---
+
+- hosts: 'node1.du.nn'
+  roles:
+    - server-common
