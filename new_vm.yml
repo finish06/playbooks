@@ -19,6 +19,7 @@
   gather_facts: yes
   vars:
     ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
   roles:
     - update
     - baseline
