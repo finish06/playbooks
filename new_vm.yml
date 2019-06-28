@@ -17,6 +17,8 @@
 - name: Setup VM
   hosts: new_hosts
   gather_facts: yes
+  vars:
+    ansible_user: "{{ username }}"
   roles:
     - update
     - baseline

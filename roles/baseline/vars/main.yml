@@ -1,5 +1,6 @@
 ---
 
+username: finish06
 timezone: America/Chicago
 vm_name:
 password: !vault |
