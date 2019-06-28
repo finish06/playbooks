@@ -17,9 +17,9 @@
   vars:
     ansible_become_password: "{{ password }}"
   lineinfile:
-    path: /etc/hosts
-    regexp: temp-debian
-    line: "{{vm_name }}"
+    path: /etc/hostname
+    regexp: temp-debian.du.nn
+    line: "{{vm_name }}.du.nn"
     state: present
   when: ansible_distribution == 'Debian'
 
@@ -31,7 +31,7 @@
   lineinfile:
     path: /etc/hosts
     regexp: (^(127\.0\.1\.1)\s+(temp-debian))
-    line: "127.0.1.1 {{vm_name }}"
+    line: "127.0.1.1 {{ vm_name }}"
     state: present
   when: ansible_distribution == 'Debian'
 
@@ -41,9 +41,9 @@
   vars:
     ansible_become_password: "{{ password }}"
   lineinfile:
-    path: /etc/hosts
-    regexp: temp-ubuntu
-    line: "{{vm_name }}"
+    path: /etc/hostname
+    regexp: temp-ubuntu.du.nn
+    line: "{{vm_name }}.du.nn"
     state: present
   when: ansible_distribution == 'Ubuntu'
 
