@@ -11,7 +11,7 @@
   apt:
     name: "{{ apt_list }}"
 
-- name: Update hostname
+- name: Update hostname on Debian
   become: true
   vars:
     ansible_become_password: "{{ password }}"
@@ -34,7 +34,7 @@
     state: present
   when: ansible_distribution == 'Debian'
 
-- name: Update hostname
+- name: Update hostname on Ubuntu
   become: true
   vars:
     ansible_become_password: "{{ password }}"
