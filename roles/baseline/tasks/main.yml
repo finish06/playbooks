@@ -12,6 +12,9 @@
     name: "{{ apt_list }}"
 
 - name: Update hostname
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hosts
     regexp: temp-debian
@@ -21,6 +24,9 @@
 
 # regexp: update hostname to match your template
 - name: Update /etc/hosts on Debian
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hosts
     regexp: (^(127\.0\.1\.1)\s+(temp-debian))
@@ -29,6 +35,9 @@
   when: ansible_distribution == 'Debian'
 
 - name: Update hostname
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hosts
     regexp: temp-ubuntu
@@ -38,6 +47,9 @@
 
 # regexp: update hostname to match your template
 - name: Update /etc/hosts on Ubuntu
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hosts
     regexp: (^(127\.0\.1\.1)\s+(temp-ubuntu))
