@@ -14,14 +14,9 @@
   roles:
    - dynamic_prox_inventory
 
-- name: Update VM
-  hosts: new_hosts
-  gather_facts: no
-  roles:
-    - update
-
 - name: Setup VM
   hosts: new_hosts
   gather_facts: yes
   roles:
+    - update
     - baseline
