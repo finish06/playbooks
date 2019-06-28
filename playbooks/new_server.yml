@@ -1,5 +1,24 @@
 ---
 
-- hosts: all
+- name: Clone new VM
+  hosts: all
+  gather_facts: yes
+  vars:
+    ansible_password: "{{ prox_password }}"
+  roles:
+    - clone
+
+- name: Dynamically create inventory
+  hosts: 127.0.0.1
+  gather_facts: no
+  roles:
+   - dynamic_prox_inventory
+
+- name: Setup VM
+  hosts: new_hosts
+  gather_facts: yes
+  vars:
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
   roles:
     - server-common

@@ -1,6 +1,4 @@
 ---
 
-- import_tasks: 00-clone.yml
-- import_tasks: 01-dynamic-inventory.yml
-- import_tasks: 02-update.yml
-- import_tasks: 03-baseline.yml
+- import_tasks: 00-update.yml
+- import_tasks: 01-baseline.yml
