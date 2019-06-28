@@ -17,3 +17,4 @@ apt_list:
   - software-properties-common
   - curl
   - apt-transport-https
+  - dbus

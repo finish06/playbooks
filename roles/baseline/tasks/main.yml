@@ -4,6 +4,13 @@
   timezone:
     name: "{{ timezone }}"
 
+- name: Install prereqs
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt:
+    name: "{{ apt_list }}"
+
 - name: Update hostname
   hostname:
     name: "{{ vm_name }}"
@@ -25,10 +32,3 @@
     line: "127.0.1.1 {{vm_name }}"
     state: present
   when: ansible_distribution == 'Ubuntu'
-
-- name: Install prereqs
-  become: true
-  vars:
-    ansible_become_password: "{{ password }}"
-  apt:
-    name: "{{ apt_list }}"
