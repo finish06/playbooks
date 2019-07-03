@@ -2,15 +2,21 @@
 
 - name: Update cache
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt: update_cache=yes
 
 - name: Install prereqs
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt:
     name: '{{ docker_apt_list }}'
 
 - name: Add Docker apt key
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt_key:
     url: https://download.docker.com/linux/{{ ansible_distribution }}/gpg
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
@@ -26,9 +32,13 @@
     - apt-key fingerprint 0EBFCD88
   args:
     warn: false
+    ansible_become_password: "{{ password }}"
   when: add_repository_key is failed
 
 - name: Add Docker repo
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt_repository:
     repo: >
       deb [arch=amd64]
@@ -40,14 +50,20 @@
 
 - name: Update cache
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt: update_cache=yes
 
 - name: Install docker
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt:
     name: 'docker-ce'
 
 - name: Install docker-compose
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   pip:
     name: ['docker-compose']
