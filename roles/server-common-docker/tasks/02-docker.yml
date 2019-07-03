@@ -26,13 +26,14 @@
 
 - name: Add Docker GPG key
   become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   shell: '{{ item }}'
   with_items:
     - curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add -
     - apt-key fingerprint 0EBFCD88
   args:
     warn: false
-    ansible_become_password: "{{ password }}"
   when: add_repository_key is failed
 
 - name: Add Docker repo
