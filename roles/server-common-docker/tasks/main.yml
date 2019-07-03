@@ -1,0 +1,5 @@
+---
+
+- import_tasks: 00-update.yml
+- import_tasks: 01-baseline.yml
+- import_task: 02-docker.yml

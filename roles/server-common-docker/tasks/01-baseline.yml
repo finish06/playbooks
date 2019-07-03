@@ -1,0 +1,60 @@
+---
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: Install prereqs
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt:
+    name: "{{ apt_list }}"
+
+# Hostname module broken (06/27): issue number: 19814
+- name: Update hostname on Debian
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  lineinfile:
+    path: /etc/hostname
+    regexp: temp-debian.du.nn
+    line: "{{vm_name }}.du.nn"
+    state: present
+  when: ansible_distribution == 'Debian'
+
+# regexp: update hostname to match your template
+- name: Update /etc/hosts on Debian
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  lineinfile:
+    path: /etc/hosts
+    regexp: (^(127\.0\.1\.1)\s+(temp-debian))
+    line: "127.0.1.1 {{ vm_name }}"
+    state: present
+  when: ansible_distribution == 'Debian'
+
+# Hostname module broken (06/27): issue number: 19814
+- name: Update hostname on Ubuntu
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  lineinfile:
+    path: /etc/hostname
+    regexp: temp-ubuntu.du.nn
+    line: "{{vm_name }}.du.nn"
+    state: present
+  when: ansible_distribution == 'Ubuntu'
+
+# regexp: update hostname to match your template
+- name: Update /etc/hosts on Ubuntu
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  lineinfile:
+    path: /etc/hosts
+    regexp: (^(127\.0\.1\.1)\s+(temp-ubuntu))
+    line: "127.0.1.1 {{vm_name }}"
+    state: present
+  when: ansible_distribution == 'Ubuntu'
