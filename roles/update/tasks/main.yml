@@ -1,26 +1,3 @@
 ---
-# Update Debian or RedHat OSs
 
-#Debian
-- name: Update cache via sudo
-  become: true
-  vars:
-    ansible_become_password: "{{ password }}"
-  apt: update_cache=yes
-  when: ansible_os_family == "Debian"
-- name: Upgrade via sudo
-  become: true
-  vars:
-    ansible_become_password: "{{ password }}"
-  apt: upgrade=full
-  when: ansible_os_family == "Debian"
-
-# RedHat
-- name: Upgrade via sudo
-  become: true
-  vars:
-    ansible_become_password: "{{ password }}"
-  yum:
-    name: "*"
-    state: latest
-  when: ansible_os_family == "RedHat"
+- import_tasks: 00-update.yml
