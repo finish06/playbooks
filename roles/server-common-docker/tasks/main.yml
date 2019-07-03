@@ -4,5 +4,5 @@
   when: ansible_os_family == "Debian"
 - import_tasks: 01-baseline.yml
   when: ansible_os_family == "Debian"
-- import_task: 02-docker.yml
+- import_tasks: 02-docker.yml
   when: ansible_os_family == "Debian"
