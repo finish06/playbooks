@@ -22,4 +22,3 @@
     ansible_password: "{{ password }}"
   roles:
     - server-common-docker
-  when: ansible_os_family == "Debian"
