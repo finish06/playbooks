@@ -18,8 +18,8 @@
     ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hostname
-    regexp: temp-debian.du.nn
-    line: "{{vm_name }}.du.nn"
+    regexp: temp-debian
+    line: "{{ vm_name }}"
     state: present
   when: ansible_distribution == 'Debian'
 
@@ -43,7 +43,7 @@
   lineinfile:
     path: /etc/hostname
     regexp: temp-ubuntu.du.nn
-    line: "{{vm_name }}.du.nn"
+    line: "{{vm_name }}"
     state: present
   when: ansible_distribution == 'Ubuntu'
 
