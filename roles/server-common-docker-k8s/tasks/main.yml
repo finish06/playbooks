@@ -1,4 +1,4 @@
 ---
 
 - import_tasks: 00-prep.yml
-- import_task: 01-k8s_install.yml
+- import_tasks: 01-k8s_install.yml
