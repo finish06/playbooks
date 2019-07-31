@@ -19,7 +19,7 @@
   lineinfile:
     path: /etc/hostname
     regexp: temp-debian.du.nn
-    line: "{{vm_name }}.du.nn"
+    line: "{{ vm_name }}"
     state: present
   when: ansible_distribution == 'Debian'
 
@@ -43,7 +43,7 @@
   lineinfile:
     path: /etc/hostname
     regexp: temp-ubuntu.du.nn
-    line: "{{vm_name }}.du.nn"
+    line: "{{ vm_name }}"
     state: present
   when: ansible_distribution == 'Ubuntu'
 
@@ -55,6 +55,6 @@
   lineinfile:
     path: /etc/hosts
     regexp: (^(127\.0\.1\.1)\s+(temp-ubuntu))
-    line: "127.0.1.1 {{vm_name }}"
+    line: "127.0.1.1 {{ vm_name }}"
     state: present
   when: ansible_distribution == 'Ubuntu'
