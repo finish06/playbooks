@@ -11,6 +11,9 @@
     warn: false
 
 - name: Add k8s repo
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
   apt_repository:
     repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
     state: present
