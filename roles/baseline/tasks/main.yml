@@ -18,7 +18,7 @@
     ansible_become_password: "{{ password }}"
   lineinfile:
     path: /etc/hostname
-    regexp: temp-debian
+    regexp: temp-debian.du.nn
     line: "{{ vm_name }}"
     state: present
   when: ansible_distribution == 'Debian'
