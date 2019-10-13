@@ -2,7 +2,7 @@
 
 - name: Clone new VM
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   vars:
     ansible_password: "{{ prox_password }}"
   roles:
