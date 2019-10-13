@@ -1,6 +1,7 @@
 ---
 
 - name: Update
+  serial: 2
   hosts: all
   gather_facts: yes
   vars:
