@@ -2,6 +2,7 @@
 
 - name: Update
   hosts: all
+  strategy: linear
   serial: 2
   gather_facts: yes
   vars:
