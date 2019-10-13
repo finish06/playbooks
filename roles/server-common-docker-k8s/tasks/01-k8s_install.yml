@@ -1,0 +1,43 @@
+---
+
+- name: Add k8s GPG key
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  shell: '{{ item }}'
+  with_items:
+    - curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+  args:
+    warn: false
+
+- name: Add k8s repo
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: kubernetes
+
+- name: Update cache
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt: update_cache=yes
+
+- name: Install k8s tools
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  apt:
+    name: "{{ k8s_list }}"
+
+- name: Hold k8s tools
+  become: true
+  vars:
+    ansible_become_password: "{{ password }}"
+  shell: '{{ item }}'
+  with_items:
+    - apt-mark hold kubelet kubeadm kubectl
+  args:
+    warn: false
