@@ -1,8 +1,8 @@
 ---
 
 - name: Update
-  serial: 2
   hosts: all
+  serial: 2
   gather_facts: yes
   vars:
     ansible_password: "{{ password }}"
