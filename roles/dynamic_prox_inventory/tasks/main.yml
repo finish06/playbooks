@@ -1,7 +1,7 @@
 ---
 
 - name: Run script to find IP
-  local_action: script files/ipQueryCmdLine.py -n {{ node_name }} -v {{ vm_id }}
+  local_action: command files/ipQueryCmdLine.py -n {{ node_name }} -v {{ vm_id }}
   register: ip_address
 
 - name: Add host(s) to inventory
